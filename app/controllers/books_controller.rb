@@ -16,6 +16,7 @@ class BooksController < ApplicationController
   else
       @user = current_user
   end
+ end
 
  def show
   @newbook = Book.new
@@ -54,9 +55,10 @@ class BooksController < ApplicationController
      flash[:notice]="Book was successfully destroyed."
      redirect_to books_path
   end
+ end
 
   private
-    def book_params
+   def book_params
       params.require(:book).permit(:title, :body)
-    end
- end
+   end
+end
