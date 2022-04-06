@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'books/error', book: @book %>
+    <%= render 'books/error', model: @book %>
     <div class="col-xs-3">
       <%= render 'users/user', user: @user %>
       <h2>New book</h2>
@@ -17,7 +17,9 @@
   	  	<tbody>
   	  	  <% @users.each do |user| %>
 	  	  	<tr>
-	  	  	  <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50,fallback: "no_image.jpg"%></td>
+	  	<td>
+	  	  <%= image_tag @user.get_profile_image(30,30) %>
+      </td>
 	  	  	  <td><%= user.name %></td>
 	  	  	  <td><%= link_to "Show", "/users/#{user.id}" %></td>
 	  	  	</tr>

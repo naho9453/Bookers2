@@ -8,7 +8,10 @@ class BooksController < ApplicationController
 
  def create
   @book = Book.new(book_params)
-  @book.user_id = current_user.id
+  # createでcurrent_userを直で書くと情報がうまく取得でないので一旦変数に格納してから
+  # user_idを取得する
+  @user = current_user
+  @book.user_id = @user.id
   if @book.save
    flash[:complete]="You have creatad book successfully."
    flash[:notice]="You have creatad book successfully."
